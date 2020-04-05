@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Pinger",
+  "description": "Extention for pin important message in a messenger conversation",
+  "version": "0.0.1",
+  "permissions": [
+    "http://*/*",
+    "https://*/*",
+    "<all_urls>",
+    "activeTab"
+  ],
+  "web_accessible_resources": ["trash.svg","copy.svg", "tick.svg"],
+  "content_scripts": [ {
+    "js": ["./node_modules/jquery/dist/jquery.min.js","main.js"],
+    "matches": [ "https://www.messenger.com/*" ]
+  }],
+  "browser_action": {
+    "default_icon" : "128.png"
+  },
+  "icons": {
+    "128" : "128.png"
+  }
+}
