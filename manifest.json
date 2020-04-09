@@ -1,6 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Pinger",
+  "name": "Messenger pin message",
+  "short_name" : "Pinger",
   "description": "Extention for pin important message in a messenger conversation",
   "version": "0.0.1",
   "permissions": [
