@@ -2,13 +2,11 @@
   "manifest_version": 2,
   "name": "Messenger pin message",
   "short_name" : "Pinger",
-  "description": "Extention for pin important message in a messenger conversation",
-  "version": "0.0.1",
+  "description": "Extension to pin important message in a messenger conversation",
+  "version": "0.0.3",
   "permissions": [
-    "http://*/*",
-    "https://*/*",
-    "<all_urls>",
-    "tabs","storage"
+    "https://www.messenger.com/*",
+    "storage"
   ],
   "web_accessible_resources": ["trash.svg","copy.svg", "tick.svg"],
   "content_scripts": [ {

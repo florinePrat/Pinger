@@ -1,7 +1,7 @@
 
     // add alterate html code in messenger page
     htmlPicker =
-        "<div id='pinMessages' class=\"_1lix _1liy _1liz\"> <div class=\"_1li-\"> </div> <h4 id='pinTitle' aria-expanded=\"false\" class=\"_1lj0 _6ybm\" aria-pressed=\"true\">PIN MESSAGE<div aria-label=\"PIN\" aria-expanded=\"false\" class=\"_1lj1 _3vo-\" role=\"button\" tabindex=\"0\"> </div> </h4> <div class=\"_1li_\"> <span class=\"_mh6\" id=\"cch_fd0b7cff3fca74\"> <ul class=\"_2o39\"> <a class=\"_3oh- _fy2 _2wjv\" href=\"#\">Afficher tout...</a> </ul> </span> </div> </div>";
+        "<div id='pinMessages' class=\"_1lix _1liy _1liz\"> <div class=\"_1li-\"> </div> <h4 id='pinTitle' aria-expanded=\"false\" class=\"_1lj0 _6ybm\" aria-pressed=\"true\">PINNED MESSAGES<div aria-label=\"PIN\" aria-expanded=\"false\" class=\"_1lj1 _3vo-\" role=\"button\" tabindex=\"0\"> </div> </h4> <div class=\"_1li_\"> <span class=\"_mh6\" id=\"cch_fd0b7cff3fca74\"> <ul class=\"_2o39\"> <a class=\"_3oh- _fy2 _2wjv\" href=\"#\">Afficher tout...</a> </ul> </span> </div> </div>";
 
     htmlPinger = "<li class=\"_hw4\" id='0604htmlpin'><a class=\"_hw5\" href=\"#\">Pin message</a></li>";
 
@@ -33,7 +33,6 @@
                 console.log("erreur")
             }
         })
-
     }
 
 
@@ -90,7 +89,9 @@
     $(document).on("click","._8sop",function(e){
         $("._hw3").ready(function () {
             let points = document.getElementsByClassName("_hw3");
-            points[0].insertAdjacentHTML('beforeend', htmlPinger);
+            if (points[0]){
+                points[0].insertAdjacentHTML('beforeend', htmlPinger);
+            }
         });
         content_message = $(this).parent().parent().parent().next().attr("aria-label");
 
@@ -117,6 +118,7 @@
                     });
                 });
                 refrechPin();
+                pinShown = false
             }
         });
     });
@@ -145,12 +147,12 @@
         let myIdSplited = myId.split('_');
         let nbItem = myIdSplited[1];
 
-
         chrome.storage.local.get(getUrl(), function (result) {
             result[getUrl()].splice(nbItem,1);
             chrome.storage.local.set(result)
         });
         refrechPin();
+        pinShown = false
     });
 
     // copy PIN MESSAGE to clip-board
